@@ -1,26 +1,32 @@
 // PARI E DISPARI
 var sceltaUtente = prompt('scegli tra pari o dispari');
-sceltaUtente = sceltaUtente.toLowerCase();
+
 
 // L’utente sceglie pari o dispari
+while (sceltaUtente != 'pari' && sceltaUtente != 'dispari') {
+
+  alert('Input non valido! Digitare pari o dispari.')
+  sceltaUtente = prompt('scegli tra pari o dispari');
+  sceltaUtente = sceltaUtente.toLowerCase();
+
+}
+
 if (sceltaUtente == 'pari') {
   sceltaUtente = 'pari';
 
-} else if (sceltaUtente == 'dispari') {
+} else {
   sceltaUtente = 'dispari';
 
-} else {
-  alert('Input non valido! Digitare pari o dispari.')
-
 }
+
 
 // inserisce un numero da 1 a 5.
 var numeroUtente = parseInt(prompt('scegli un numero tra 1 e 5'));
 console.log('numeroUtente prima loggata: ', numeroUtente);
 
-while (isNaN(numeroUtente)) {
+while (isNaN(numeroUtente) || numeroUtente >= 6 || numeroUtente == 0) {
 
-  alert('Errore! Devi inserire un numero.')
+  alert('Errore! Devi inserire un numero tra 1 e 5.')
   numeroUtente = parseInt(prompt('scegli un numero tra 1 e 5'));
   console.log('numeroUtente errore inserimento: ', numeroUtente);
 
@@ -35,9 +41,11 @@ function numeroCasuale(min, max) {
 var numeroPC = numeroCasuale(1, 6);
 console.log('numeroPC: ', numeroPC);
 
+
 // Sommiamo i due numeri.
 var sommaNumeri = numeroUtente + numeroPC;
 console.log('sommaNumeri: ', sommaNumeri);
+
 
 // Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione).
 function ePari(numero) {
@@ -45,7 +53,6 @@ function ePari(numero) {
   return numero % 2 == 0;
 }
 
-// console.log('sommaNumeri ePari: ', ePari(sommaNumeri));
 
 // Dichiariamo chi ha vinto.
 var messaggio = 'Numero utente: ' + numeroUtente + ', numeroPC: ' + numeroPC + ', somma numeri: ' + sommaNumeri;
